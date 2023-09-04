@@ -1,6 +1,8 @@
-name: Events Demo
+name: Events Test Workflow
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
   pull_request:
     types: [opened, edited]
 jobs:
