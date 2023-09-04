@@ -1,4 +1,4 @@
-name: Events Demo
+name: Events Test Workflow
 on:
   workflow_dispatch:
   pull_request:
