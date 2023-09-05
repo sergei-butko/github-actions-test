@@ -1,5 +1,6 @@
 name: Environment variables Test Workflow
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
