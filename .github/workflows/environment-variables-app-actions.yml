@@ -2,7 +2,7 @@ name: Environment variables Test Workflow
 on:
   push:
     branches:
-      - main
+      - master
       - dev
 env:
   MONGODB_DB_NAME: gha-demo
