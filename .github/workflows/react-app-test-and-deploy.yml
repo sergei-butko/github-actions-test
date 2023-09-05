@@ -1,4 +1,4 @@
-name: Test and Deploy Project
+name: React app Test Workflow
 on:  workflow_dispatch
 jobs:
   test:

@@ -1,4 +1,4 @@
-name: Deployment
+name: Environment variables Test Workflow
 on:
   push:
     branches:
@@ -23,10 +23,13 @@ jobs:
           path: ~/.npm
           key: npm-deps-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
+        working-directory: ./environment-variables-app
         run: npm ci
       - name: Run server
+        working-directory: ./environment-variables-app
         run: npm start & npx wait-on http://127.0.0.1:$PORT
       - name: Run tests
+        working-directory: ./environment-variables-app
         run: npm test
       - name: Output information
         run: |
