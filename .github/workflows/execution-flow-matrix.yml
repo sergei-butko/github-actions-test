@@ -1,0 +1,30 @@
+name: Execution flow Matrix Test Action
+# on: [workflow_dispatch, push]
+on: workflow_dispatch
+jobs:
+  build:
+    continue-on-error: true
+    strategy:
+      matrix:
+        node-version: [12, 14, 16]
+        operation-system: [ubuntu-latest, windows-latest]
+        include:
+            - node-version: 18
+              operation-system: ubuntu-latest
+        exclude:
+            - node-version: 12
+              operation-system: windows-latest
+    runs-on: ${{ matrix.operation-system }}
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+            node-version: ${{ matrix.node-version }}
+      - name: Install Dependencies
+        working-directory: ./execution-flow
+        run: npm ci
+      - name: Build project
+        working-directory: ./execution-flow
+        run: npm run build
