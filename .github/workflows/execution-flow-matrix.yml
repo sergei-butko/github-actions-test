@@ -1,6 +1,6 @@
-name: Execution flow Matrix Test Action
-on: [workflow_dispatch, push]
-# on: workflow_dispatch
+name: Execution flow - Matrix - Test Action
+# on: [workflow_dispatch, push]
+on: workflow_dispatch
 jobs:
   build:
     continue-on-error: true
@@ -12,6 +12,8 @@ jobs:
             - node-version: 18
               operation-system: ubuntu-latest
         exclude:
+            - node-version: 12
+              operation-system: ubuntu-latest
             - node-version: 12
               operation-system: windows-latest
     runs-on: ${{ matrix.operation-system }}

@@ -1,10 +1,10 @@
-name: Environment variables Test Workflow
+name: Environment variables - Test Workflow
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
-      - dev
+  # push:
+  #   branches:
+  #     - main
+  #     - dev
 env:
   MONGODB_DB_NAME: gha-demo
 jobs:

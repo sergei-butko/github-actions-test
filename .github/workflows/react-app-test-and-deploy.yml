@@ -1,4 +1,4 @@
-name: React app Test Workflow
+name: React app - Test Workflow
 on:  workflow_dispatch
 jobs:
   test:
