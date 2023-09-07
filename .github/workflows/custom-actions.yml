@@ -14,6 +14,7 @@ jobs:
         uses: ./.github/actions/cached-deps
         with:
           work-dir: ./custom-actions
+          caching: 'false'
       - name: Lint code
         working-directory: ./custom-actions
         run: npm run lint
