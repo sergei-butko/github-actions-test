@@ -1,8 +1,9 @@
 name: Events - Test Workflow
 on:
   workflow_dispatch:
-  # push:
-  #   branches: [main]
+#  push:
+#    branches:
+#      - main
   pull_request:
     types: [opened, edited]
 jobs:
@@ -14,13 +15,13 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Install dependencies
-        working-directory: ./events-app
+        working-directory: ./event
         run: npm ci
       - name: Test code
-        working-directory: ./events-app
+        working-directory: ./events
         run: npm run test
       - name: Build code
-        working-directory: ./events-app
+        working-directory: ./events
         run: npm run build
       - name: Deploy project
         run: echo "Deploying..."

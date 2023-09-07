@@ -16,13 +16,13 @@ jobs:
           path: ~/.npm
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
-        working-directory: ./artifacts-and-outputs-app
+        working-directory: ./artifacts-and-outputs
         run: npm ci
       - name: Lint code
-        working-directory: ./artifacts-and-outputs-app
+        working-directory: ./artifacts-and-outputs
         run: npm run lint
       - name: Test code
-        working-directory: ./artifacts-and-outputs-app
+        working-directory: ./artifacts-and-outputs
         run: npm run test
   build:
     needs: test
@@ -38,19 +38,19 @@ jobs:
           path: ~/.npm
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
-        working-directory: ./artifacts-and-outputs-app
+        working-directory: ./artifacts-and-outputs
         run: npm ci
       - name: Build website
-        working-directory: ./artifacts-and-outputs-app
+        working-directory: ./artifacts-and-outputs
         run: npm run build
       - name: Publish JS file name
         id: publish
-        run: find artifacts-and-outputs-app/dist/assets/*.js -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
+        run: find artifacts-and-outputs/dist/assets/*.js -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: dist-files
-          path: artifacts-and-outputs-app/dist
+          path: artifacts-and-outputs/dist
   deploy:
     needs: build
     runs-on: ubuntu-latest

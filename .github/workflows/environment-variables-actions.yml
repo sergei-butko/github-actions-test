@@ -25,13 +25,13 @@ jobs:
           path: ~/.npm
           key: npm-deps-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
-        working-directory: ./environment-variables-app
+        working-directory: ./environment-variables
         run: npm ci
       - name: Run server
-        working-directory: ./environment-variables-app
+        working-directory: ./environment-variables
         run: npm start & npx wait-on http://127.0.0.1:$PORT
       - name: Run tests
-        working-directory: ./environment-variables-app
+        working-directory: ./environment-variables
         run: npm test
       - name: Output information
         run: |
